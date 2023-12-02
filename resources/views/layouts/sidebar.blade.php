@@ -8,7 +8,7 @@
     <li class="active"><a class="nav-link" href="/"><i class="fas fa-home"></i>
         <span>Dashboard</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/"><i class="fas fa-users"></i>
+    <li class=""><a class="nav-link" href="{{ route('siswa.index') }}"><i class="fas fa-users"></i>
         <span>Data Siswa</span></a>
     </li>
     <li class=""><a class="nav-link" href="/"><i class="fas fa-list"></i>
