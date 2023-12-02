@@ -2101,6 +2101,20 @@ h6 .badge {
   display: flex;
 }
 
+.search-element {
+  position: relative !important;
+}
+
+.btn-search {
+  position: absolute !important;
+  top: 1px !important;
+  right: 1px !important;
+}
+
+.input-search {
+  border-radius: 3px !important;
+}
+
 @media (max-width: 575.98px) {
   body.search-show .navbar .form-inline .search-element {
     display: block;
