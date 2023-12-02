@@ -1,8 +1,8 @@
 <div class="sidebar-brand">
-    <a href="index.html">Stisla</a>
+    <a href="index.html"><img src="/assets/img/polinema.png" alt="" width="25"></a>
 </div>
 <div class="sidebar-brand sidebar-brand-sm">
-    <a href="index.html">St</a>
+    <a href="index.html"><img src="/assets/img/polinema.png" alt="" width="25"></a>
 </div>
 <ul class="sidebar-menu">
     <li class="menu-header">Dashboard</li>
