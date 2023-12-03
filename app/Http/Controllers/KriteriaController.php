@@ -14,12 +14,6 @@ class KriteriaController extends Controller
     public function index()
     {
         $data = Kriteria::all();
-        $data->transform(function ($item, $key) {
-            if ($item->value == 0.1) {
-                $item->value = 10;
-            }
-            return $item;
-        });
         return view('pages.kriteria', compact('data'));
     }
 
