@@ -15,7 +15,13 @@ use App\Http\Controllers\SiswaController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
 
 Route::resource('siswa', SiswaController::class);
