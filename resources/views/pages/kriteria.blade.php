@@ -51,7 +51,7 @@
                                                     <div class="d-flex justify-content-end">
                                                         <a href="#"
                                                             class="btn btn-sm btn-secondary btn-icon ml-2 d-flex align-items-center">
-                                                            <span><i class="fas fa-edit"></i></span>&nbsp;Edit
+                                                            <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
                                                         </a>
                                                         <a href="#"
                                                             class="btn btn-sm btn-info btn-icon ml-2 d-flex align-items-center">

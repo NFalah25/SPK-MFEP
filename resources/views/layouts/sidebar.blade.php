@@ -14,11 +14,11 @@
     <li class="{{ request()->is('kriteria') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kriteria.index') }}"><i class="fas fa-list"></i>
         <span>Kriteria</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-keyboard"></i>
-        <span>Penginputan Nilai</span></a>
-    </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-list"></i>
+    <li class="{{ request()->is('alternatif') ? 'active' : '' }}"><a class="nav-link" href="{{ route('alternatif.index') }}"><i class="fas fa-list"></i>
         <span>Alternatif</span></a>
+    </li>
+    <li class="{{ request()->is('nilai') ? 'active' : '' }}"><a class="nav-link" href="{{ route('nilai.index') }}"><i class="fas fa-keyboard"></i>
+        <span>Penginputan Nilai</span></a>
     </li>
     <li class=""><a class="nav-link" href="/home"><i class="fas fa-table"></i>
         <span>Perhitungan SAW</span></a>
