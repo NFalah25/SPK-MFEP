@@ -16,7 +16,13 @@ use App\Http\Controllers\KriteriaController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/home', function () {
+        return view('dashboard');
+    })->name('home');
 });
 
 Route::resource('siswa', SiswaController::class);
