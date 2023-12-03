@@ -11,7 +11,7 @@
     <li class=""><a class="nav-link" href="{{ route('siswa.index') }}"><i class="fas fa-users"></i>
         <span>Data Siswa</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/"><i class="fas fa-list"></i>
+    <li class=""><a class="nav-link" href="{{ route('kriteria.index') }}"><i class="fas fa-list"></i>
         <span>Kriteria</span></a>
     </li>
     <li class=""><a class="nav-link" href="/"><i class="fas fa-keyboard"></i>
