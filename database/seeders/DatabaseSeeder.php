@@ -17,5 +17,9 @@ class DatabaseSeeder extends Seeder
             KriteriaSeeder::class,
             EvaluasiSeeder::class,
         ]);
+
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }
