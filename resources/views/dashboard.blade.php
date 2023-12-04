@@ -16,7 +16,7 @@
                             <h4>Data Siswa</h4>
                         </div>
                         <div class="card-body">
-                            20
+                            {{ $alternatif }}
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                             <h4>Kriteria</h4>
                         </div>
                         <div class="card-body">
-                            10
+                            {{ $kriteria }}
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <h4>Alternatif</h4>
                         </div>
                         <div class="card-body">
-                            20
+                            {{ $alternatif }}
                         </div>
                     </div>
                 </div>

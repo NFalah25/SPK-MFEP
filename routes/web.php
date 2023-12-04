@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlternatifController;
-use App\Http\Controllers\NilaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/home', function () {
-        return view('dashboard');
-    })->name('home');
+    // Route::get('/home', function () {
+    //     return view('dashboard');
+    // })->name('home');
+    Route::get('/home', [DashboardController::class, 'index']);
 });
 
 Route::resource('siswa', SiswaController::class);
