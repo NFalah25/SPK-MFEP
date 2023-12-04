@@ -14,11 +14,11 @@ class KriteriaSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['id' => 1, 'kriteria' => 'Kedisiplinan', 'atribut' => 'Benefit', 'bobot' => 0.200],
-            ['id' => 2, 'kriteria' => 'Keaktifan', 'atribut' => 'Benefit', 'bobot' => 0.150],
-            ['id' => 3, 'kriteria' => 'Total Penjualan', 'atribut' => 'Benefit', 'bobot' => 0.300],
-            ['id' => 4, 'kriteria' => 'Jumlah Anggota', 'atribut' => 'Benefit', 'bobot' => 0.250],
-            ['id' => 5, 'kriteria' => 'Kegigihan', 'atribut' => 'Benefit', 'bobot' => 0.150],
+            ['id' => 1, 'kriteria' => 'Kedisiplinan', 'atribut' => 'Benefit', 'bobot' => 20],
+            ['id' => 2, 'kriteria' => 'Keaktifan', 'atribut' => 'Benefit', 'bobot' => 15],
+            ['id' => 3, 'kriteria' => 'Total Penjualan', 'atribut' => 'Benefit', 'bobot' => 30],
+            ['id' => 4, 'kriteria' => 'Jumlah Anggota', 'atribut' => 'Benefit', 'bobot' => 25],
+            ['id' => 5, 'kriteria' => 'Kegigihan', 'atribut' => 'Benefit', 'bobot' => 15],
         ];
 
         DB::table('kriteria')->insert($data);

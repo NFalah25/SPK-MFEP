@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label>Atribut</label>
                             <select class="form-control select2" name="atribut">
-                                <option value="">Pilih Atribut</option>
+                                <option value="{{ old('atribut', $kriteria->atribut) }}">{{ $kriteria->atribut }}</option>
                                 <option value="Benefit">Benefit</option>
                                 <option value="Cost">Cost</option>
                             </select>
@@ -45,7 +45,8 @@
                         <div class="form-group">
                             <label for="bobot">Bobot</label>
                             <input type="number" class="form-control @error('bobot') is-invalid @enderror"
-                                id="bobot" name="bobot" spellcheck="false" autocomplete="off">
+                                id="bobot" name="bobot" spellcheck="false" autocomplete="off"
+                                value="{{ old('bobot', $kriteria->bobot) }}">
                             @error('bobot')
                                 <div class="invalid-feedback">
                                     {{ $message }}
