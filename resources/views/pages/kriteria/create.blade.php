@@ -29,8 +29,8 @@
                         </div>
                         <div class="form-group">
                             <label>Atribut</label>
-                            <select class="form-control select2" name="atribut">
-                                <option value="">Pilih Atribut</option>
+                            <select class="form-control select2 @error('atribut') is-invalid @enderror" name="atribut">
+                                <option value="">-</option>
                                 <option value="Benefit">Benefit</option>
                                 <option value="Cost">Cost</option>
                             </select>
