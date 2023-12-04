@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kriteria;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class NilaiController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $kriteria = Kriteria::all();
-        $alternatif = Alternatif::all();
-        return view('pages.nilai', compact('kriteria', 'alternatif'));
+        $kriteria = Alternatif::all()->count();
+        $alternatif = Alternatif::all()->count();
+        return view('dashboard', compact('kriteria', 'alternatif'));
     }
 
     /**
