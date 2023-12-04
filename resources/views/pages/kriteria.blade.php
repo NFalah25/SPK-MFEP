@@ -4,16 +4,13 @@
     <!-- Main Content -->
     <section class="section">
         <div class="section-header">
-            <h1>Data Kriteria</h1>
+            <h1>Kriteria</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Kriteria</a></div>
-                <div class="breadcrumb-item"><a href="#">Manajemen</a></div>
                 <div class="breadcrumb-item">Tabel</div>
             </div>
         </div>
         <div class="section-body">
-            <h2 class="section-title">Manajemen Kriteria</h2>
-
             <div class="row">
                 <div class="col-12">
                     @include('layouts.alert')
