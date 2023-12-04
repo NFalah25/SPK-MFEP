@@ -20,16 +20,16 @@
     <li class="{{ request()->is('nilai') ? 'active' : '' }}"><a class="nav-link" href="{{ route('nilai.index') }}"><i class="fas fa-keyboard"></i>
         <span>Penginputan Nilai</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-table"></i>
+    <li class="{{ request()->is('saw') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-table"></i>
         <span>Perhitungan SAW</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-table"></i>
+    <li class="{{ request()->is('mfep') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-table"></i>
         <span>Perhitungan MFEP</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-folder-open"></i>
+    <li class="{{ request()->is('perbandingan') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-folder-open"></i>
         <span>Perbandingan</span></a>
     </li>
-    <li class=""><a class="nav-link" href="/home"><i class="fas fa-user"></i>
+    <li class="{{ request()->is('pengguna') ? 'active' : '' }}"><a class="nav-link" href="/pengguna"><i class="fas fa-user"></i>
         <span>Pengguna</span></a>
     </li>
     <li class=""><a class="nav-link" href="{{ route('logout') }}"
