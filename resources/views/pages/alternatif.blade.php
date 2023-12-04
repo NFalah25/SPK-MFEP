@@ -39,7 +39,7 @@
                                         @foreach ($data as $key => $item)
                                             <tr>
                                                 <td>{{ $key + 1 }}
-                                                <td>{{ $item -> alternatif }}</td>
+                                                <td>{{ $item->alternatif }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
                                                         <a href="#"

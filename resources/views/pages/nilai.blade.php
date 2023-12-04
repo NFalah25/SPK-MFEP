@@ -33,10 +33,10 @@
                         </div>
                         @foreach ($kriteria as $key => $item)
                             <div class="form-group">
-                                <label for="{{ $item -> kriteria }}">{{ $item -> kriteria }}</label>
-                                <input type="text" class="form-control @error('{{ $item -> kriteria }}') is-invalid @enderror"
-                                    id="{{ $item -> kriteria }}" name="{{ $item -> kriteria }}" spellcheck="false" autocomplete="off">
-                                @error('{{ $item -> kriteria }}')
+                                <label for="{{ $item->kriteria }}">{{ $item->kriteria }}</label>
+                                <input type="text" class="form-control @error('{{ $item->kriteria }}') is-invalid @enderror"
+                                    id="{{ $item->kriteria }}" name="{{ $item->kriteria }}" spellcheck="false" autocomplete="off">
+                                @error('{{ $item->kriteria }}')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

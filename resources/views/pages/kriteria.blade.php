@@ -40,10 +40,10 @@
                                     <tbody>
                                         @foreach ($data as $key => $item)
                                             <tr>
-                                                <td>{{ $key + 1 }}
-                                                <td>{{ $item -> kriteria }}</td>
-                                                <td>{{ $item -> atribut }}</td>
-                                                <td>{{ $item -> bobot *= 100}}%</td>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $item->kriteria }}</td>
+                                                <td>{{ $item->atribut }}</td>
+                                                <td>{{ $item->bobot *= 100}}%</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
                                                         <a href="#"
