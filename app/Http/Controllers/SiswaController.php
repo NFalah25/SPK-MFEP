@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluasi;
+use App\Models\Kriteria;
+use App\Models\Alternatif;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SiswaController extends Controller
 {
@@ -11,7 +15,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('pages.siswa');
+        $evaluasi = Evaluasi::all();
+        $kriteria = Kriteria::all();
+        $alternatif = Alternatif::all();
+        return view('pages.siswa', compact('evaluasi', 'kriteria', 'alternatif'));
     }
 
     /**

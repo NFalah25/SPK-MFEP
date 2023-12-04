@@ -15,8 +15,7 @@
                     <h4>Validasi Tambah Nilai</h4>
                 </div>
                 <div class="card-body">
-                    {{-- <form action="{{ route('penduduk.store') }}" method="post"> --}}
-                    <form action="#" method="post" id="form">
+                    <form action="{{ route('nilai.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label>Nama Alternatif</label>
@@ -32,18 +31,41 @@
                                 </div>
                             @enderror
                         </div>
-                        @foreach ($kriteria as $key => $item)
+                        {{-- @foreach ($kriteria as $key => $item)
                             <div class="form-group">
                                 <label for="{{ $item->kriteria }}">{{ $item->kriteria }}</label>
-                                <input type="text" class="form-control @error('{{ $item->kriteria }}') is-invalid @enderror"
-                                    id="{{ $item->kriteria }}" name="{{ $item->kriteria }}" spellcheck="false" autocomplete="off">
-                                @error('{{ $item->kriteria }}')
+                                <input id="id_kriteria" name="id_kriteria" style="display: none" value="{{ $item->id }}">
+                                <input type="number" class="form-control @error('nilai') is-invalid @enderror"
+                                    id="nilai" name="nilai" spellcheck="false" autocomplete="off">
+                                @error('nilai')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                        @endforeach
+                        @endforeach --}}
+                        <div class="form-group">
+                            <label for="{{ $kriteria[0]->kriteria }}">{{ $kriteria[0]->kriteria }}</label>
+                            <input id="id_kriteria" name="id_kriteria" style="display: none" value="{{ $kriteria[0]->id }}">
+                            <input type="number" class="form-control @error('nilai') is-invalid @enderror"
+                                id="nilai" name="nilai[]" spellcheck="false" autocomplete="off">
+                            @error('nilai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ $kriteria[1]->kriteria }}">{{ $kriteria[1]->kriteria }}</label>
+                            <input id="id_kriteria" name="id_kriteria" style="display: none" value="{{ $kriteria[1]->id }}">
+                            <input type="number" class="form-control @error('nilai') is-invalid @enderror"
+                                id="nilai" name="nilai[]" spellcheck="false" autocomplete="off">
+                            @error('nilai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="card-footer text-right">
                         <button class="btn btn-primary">Simpan</button>

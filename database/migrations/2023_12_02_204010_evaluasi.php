@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('id_alternatif')->references('id')->on('alternatif')->onDelete('cascade');
             $table->unsignedBigInteger('id_kriteria')->default(0);
             $table->foreign('id_kriteria')->references('id')->on('kriteria')->onDelete('cascade');
-            $table->integer('nilai')->notNull();
+            $table->integer('nilai');
             $table->timestamps();
         });
     }

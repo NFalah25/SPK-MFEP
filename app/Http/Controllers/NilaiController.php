@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluasi;
 use App\Models\Kriteria;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNilaiRequest;
 
 class NilaiController extends Controller
 {
@@ -30,9 +32,14 @@ class NilaiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNilaiRequest $request)
     {
-        //
+        Evaluasi::create([
+            'id_alternatif' => $request['id_alternatif'],
+            'id_kriteria' => $request['id_kriteria'],
+            'nilai' => $request['nilai'],
+        ]);
+        return redirect(route('nilai.index'))->with('success', 'Nilai Berhasil Ditambahkan');;
     }
 
     /**
