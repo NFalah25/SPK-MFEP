@@ -1,5 +1,24 @@
 "use strict";
 
+$(".confirm-delete").click(function (event) {
+  let form = $(this).closest("form");
+  event.preventDefault();
+  swal({
+      title: `Apakah Anda yakin ingin meng-hapus data ini?`,
+      text: "Jika Anda hapus, data akan hilang selamanya.",
+      icon: "warning",
+      buttons: {
+          cancel: 'Batal',
+          confirm: 'Ya',
+      },
+      dangerMode: true,
+  }).then((willDelete) => {
+      if (willDelete) {
+          form.submit();
+      }
+  });
+});
+
 $("#swal-1").click(function() {
 	swal('Hello');
 });

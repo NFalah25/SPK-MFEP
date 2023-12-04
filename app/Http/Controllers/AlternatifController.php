@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAlternatifRequest;
+use App\Http\Requests\UpdateAlternatifRequest;
 
 class AlternatifController extends Controller
 {
@@ -14,7 +15,7 @@ class AlternatifController extends Controller
     public function index()
     {
         $data = Alternatif::all();
-        return view('pages.alternatif', compact('data'));
+        return view('pages.alternatif.index', compact('data'));
     }
 
     /**
@@ -22,15 +23,18 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.alternatif.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAlternatifRequest $request)
     {
-        //
+        Alternatif::create([
+            'alternatif' => $request['alternatif'],
+        ]);
+        return redirect(route('alternatif.index'))->with('success', 'Alternatif Berhasil Ditambahkan');
     }
 
     /**
@@ -44,24 +48,28 @@ class AlternatifController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Alternatif $alternatif)
     {
-        //
+        return view('pages.alternatif.edit')->with('alternatif', $alternatif);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateAlternatifRequest $request, Alternatif $alternatif)
     {
-        //
+        $validate = $request->validated();
+
+        $alternatif->update($validate);
+        return redirect()->route('alternatif.index')->with('success', 'Alternatif Berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Alternatif $alternatif)
     {
-        //
+        $alternatif->delete();
+        return redirect()->route('alternatif.index')->with('success', 'Alternatif Berhasil Dihapus');
     }
 }

@@ -24,14 +24,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    // Route::get('/home', function () {
-    //     return view('dashboard');
-    // })->name('home');
     Route::get('/home', [DashboardController::class, 'index']);
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('kriteria', KriteriaController::class);
+    Route::resource('alternatif', AlternatifController::class);
+    Route::resource('nilai', NilaiController::class);
+    Route::resource('pengguna', UserController::class);
 });
-
-Route::resource('siswa', SiswaController::class);
-Route::resource('kriteria', KriteriaController::class);
-Route::resource('alternatif', AlternatifController::class);
-Route::resource('nilai', NilaiController::class);
-Route::resource('pengguna', UserController::class);

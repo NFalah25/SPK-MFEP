@@ -694,6 +694,9 @@ select.form-control:not([size]):not([multiple]) {
 .alert.alert-has-icon .alert-body {
   flex: 1;
 }
+.close {
+  height: 100%;
+}
 .alert:not(.alert-light) a {
   color: #fff;
 }

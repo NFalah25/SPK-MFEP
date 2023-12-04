@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Main Content -->
     <section class="section">
         <div class="section-header">
-            <h1>Kriteria</h1>
+            <h1>Alternatif</h1>
             <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Kriteria</a></div>
+                <div class="breadcrumb-item active"><a href="#">Alternatif</a></div>
                 <div class="breadcrumb-item">Tabel</div>
             </div>
         </div>
@@ -20,9 +19,9 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h4>Daftar Kriteria</h4>
+                            <h4>Daftar Alternatif</h4>
                             <div class="card-header-action">
-                                <a class="btn btn-icon icon-left btn-primary" href="#">Tambah Kriteria</a>
+                                <a class="btn btn-icon icon-left btn-primary" href="{{ route('alternatif.create') }}">Tambah Alternatif</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -31,29 +30,29 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama Kriteria</th>
-                                            <th>Atribut</th>
-                                            <th>Bobot</th>
+                                            <th>Nama Alternatif</th>
                                             <th class="text-right">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data as $key => $item)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->atribut }}</td>
-                                                <td>{{ $item->bobot *= 100}}%</td>
+                                                <td>{{ $key + 1 }}
+                                                <td>{{ $item->alternatif }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="#"
-                                                            class="btn btn-sm btn-secondary btn-icon ml-2 d-flex align-items-center">
+                                                        <a href="{{ route('alternatif.edit', $item->id) }}"
+                                                            class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
                                                         </a>
-                                                        <a href="#"
-                                                            class="btn btn-sm btn-info btn-icon ml-2 d-flex align-items-center">
-                                                            <span><i class="fas fa-edit"></i></span>&nbsp;Sub Kriteria
-                                                        </a>
+                                                        <form action="{{ route('alternatif.destroy', $item->id) }}"
+                                                          method="POST">
+                                                          <input type="hidden" name="_method" value="DELETE">
+                                                          <input type="hidden" name="_token"
+                                                              value="{{ csrf_token() }}">
+                                                          <button class="btn btn-sm btn-danger btn-icon confirm-delete d-flex align-items-center">
+                                                          <span><i class="fas fa-times"></i></span>&nbsp;Hapus</button>
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
