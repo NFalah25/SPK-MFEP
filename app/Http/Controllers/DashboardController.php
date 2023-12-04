@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kriteria;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $kriteria = Alternatif::all()->count();
+        $kriteria = Kriteria::all()->count();
         $alternatif = Alternatif::all()->count();
         return view('dashboard', compact('kriteria', 'alternatif'));
     }
