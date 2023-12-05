@@ -23,9 +23,6 @@
     <li class="{{ request()->is('alternatif') ? 'active' : '' }} || {{ $alternatif ? 'active' : '' }}"><a class="nav-link" href="{{ route('alternatif.index') }}"><i class="fas fa-list"></i>
         <span>Alternatif</span></a>
     </li>
-    <li class="{{ request()->is('nilai') ? 'active' : '' }}"><a class="nav-link" href="{{ route('nilai.index') }}"><i class="fas fa-keyboard"></i>
-        <span>Penginputan Nilai</span></a>
-    </li>
     <li class="{{ request()->is('saw') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-table"></i>
         <span>Perhitungan SAW</span></a>
     </li>

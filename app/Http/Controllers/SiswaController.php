@@ -7,6 +7,7 @@ use App\Models\Kriteria;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNilaiRequest;
 
 class SiswaController extends Controller
 {
@@ -32,9 +33,14 @@ class SiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNilaiRequest $request)
     {
-        //
+        Evaluasi::create([
+            'id_alternatif' => $request['id_alternatif'],
+            'id_kriteria' => $request['id_kriteria'],
+            'nilai' => $request['nilai'],
+        ]);
+        return redirect(route('siswa.index'))->with('success', 'Nilai Berhasil Ditambahkan');
     }
 
     /**
