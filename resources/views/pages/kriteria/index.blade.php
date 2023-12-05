@@ -21,7 +21,7 @@
                         <div class="card-header">
                             <h4>Daftar Kriteria</h4>
                             <div class="card-header-action">
-                                <a class="btn btn-icon icon-left btn-primary" href="{{ route('kriteria.create') }}">Tambah Kriteria</a>
+                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -66,7 +66,64 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Tambah Kriteria</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('kriteria.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="kriteria">Nama Kriteria</label>
+                            <input type="text" class="form-control @error('kriteria') is-invalid @enderror"
+                                id="kriteria" name="kriteria" spellcheck="false" autocomplete="off">
+                            @error('kriteria')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Atribut</label>
+                            <select class="form-control select2 @error('atribut') is-invalid @enderror" name="atribut">
+                                <option value="">-</option>
+                                <option value="Benefit">Benefit</option>
+                                <option value="Cost">Cost</option>
+                            </select>
+                            @error('atribut')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group m-0">
+                            <label for="bobot">Bobot</label>
+                            <input type="number" class="form-control @error('bobot') is-invalid @enderror"
+                                id="bobot" name="bobot" spellcheck="false" autocomplete="off">
+                            @error('bobot')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
+@push('customScript')
+    <script src="/assets/js/select2.min.js"></script>
+@endpush
+
 @push('customStyle')
+    <link rel="stylesheet" href="/assets/css/select2.min.css">
 @endpush

@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button class="btn btn-primary">Simpan</button>
+                        <button class="btn btn-primary mr-1">Simpan</button>
                         <a class="btn btn-light" href="{{ route('kriteria.index') }}">Batal</a>
                     </div>
                 </form>

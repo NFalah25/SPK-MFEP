@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <button class="btn btn-primary">Simpan</button>
+                        <button class="btn btn-primary mr-1">Simpan</button>
                         <button type="button" class="btn btn-light" onclick="resetForm()">Batal</button>
                     </div>
                 </form>

@@ -23,7 +23,7 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        return view('pages.alternatif.create');
+        //
     }
 
     /**
