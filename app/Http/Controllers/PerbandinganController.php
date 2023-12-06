@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternatif;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PerbandinganController extends Controller
 {
@@ -11,7 +13,8 @@ class PerbandinganController extends Controller
      */
     public function index()
     {
-        return view('pages.perbandingan');
+        $data = Alternatif::all();
+        return view('pages.perbandingan', compact('data'));
     }
 
     /**
