@@ -9,7 +9,8 @@ class Kriteria extends Model
 {
     use HasFactory;
     protected $table = 'kriteria';
-    protected $guarded = ['id'];
+    protected $guarded = ['id_kriteria'];
+    protected $primaryKey = 'id_kriteria';
 
     public function evaluasi()
     {

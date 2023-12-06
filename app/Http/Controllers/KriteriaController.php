@@ -59,11 +59,11 @@ class KriteriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKriteriaRequest $request, string $id)
+    public function update(UpdateKriteriaRequest $request, string $id_kriteria)
     {
         $validate = $request->validated();
 
-        Kriteria::find($id)->update($validate);
+        Kriteria::find($id_kriteria)->update($validate);
         return redirect()->route('kriteria.index')->with('success', 'Kriteria Berhasil Diupdate');
     }
 

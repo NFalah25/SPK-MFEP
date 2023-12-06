@@ -9,7 +9,8 @@ class Alternatif extends Model
 {
     use HasFactory;
     protected $table = 'alternatif';
-    protected $guarded = ['id'];
+    protected $guarded = ['id_alternatif'];
+    protected $primaryKey = 'id_alternatif';
 
     public function evaluasi()
     {

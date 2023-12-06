@@ -29,7 +29,7 @@
                                 <table class="table table-striped table-md" id="keluarga">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>No</th>
                                             <th>Nama Kriteria</th>
                                             <th>Atribut</th>
                                             <th>Bobot</th>
@@ -45,7 +45,7 @@
                                                 <td>{{ $item->bobot }}%</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="{{ route('kriteria.edit', $item->id) }}"
+                                                        <a href="{{ route('kriteria.edit', $item->id_kriteria) }}"
                                                             class="btn btn-sm btn-secondary btn-icon ml-2 d-flex align-items-center">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
                                                         </a>
@@ -67,7 +67,7 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

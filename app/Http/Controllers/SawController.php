@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evaluasi;
 use App\Models\Kriteria;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreNilaiRequest;
 
-class SiswaController extends Controller
+class SawController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $alternatif = Alternatif::orderByDesc('id_alternatif')->get();
+        $alternatif = Alternatif::all();
         $kriteria = Kriteria::all();
         $evaluasi = DB::table('evaluasi')
         ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
@@ -36,10 +34,10 @@ class SiswaController extends Controller
             DB::raw('SUM(IF(evaluasi.id_kriteria=10, evaluasi.nilai, 0)) AS C10')
         )
         ->groupBy('evaluasi.id_alternatif', 'alternatif.alternatif')
-        ->orderByDesc('evaluasi.id_alternatif')
+        ->orderBy('evaluasi.id_alternatif')
         ->get();
 
-        return view('pages.siswa', compact('alternatif', 'kriteria', 'evaluasi'));
+        return view('pages.saw', compact('alternatif', 'kriteria', 'evaluasi'));
     }
 
     /**
@@ -53,14 +51,9 @@ class SiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNilaiRequest $request)
+    public function store(Request $request)
     {
-        Evaluasi::create([
-            'id_alternatif' => $request['id_alternatif'],
-            'id_kriteria' => $request['id_kriteria'],
-            'nilai' => $request['nilai'],
-        ]);
-        return redirect(route('siswa.index'))->with('success', 'Nilai Berhasil Ditambahkan');
+        //
     }
 
     /**
@@ -90,9 +83,8 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
-        Evaluasi::where('id_alternatif', $id)->delete();
-        return redirect()->route('siswa.index')->with('success', 'Alternatif Berhasil Dihapus');
+        //
     }
 }
