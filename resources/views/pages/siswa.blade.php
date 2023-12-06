@@ -57,7 +57,7 @@
                                                         <a href="{{ route('alternatif.edit', $item->id_alternatif) }}" class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center justify-content-center" style="height: 30px; width: 30px">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
-                                                        <form action="{{ route('alternatif.destroy', $item->id_alternatif) }}"
+                                                        <form action="{{ route('siswa.destroy', $item->id_alternatif) }}"
                                                             method="POST">
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

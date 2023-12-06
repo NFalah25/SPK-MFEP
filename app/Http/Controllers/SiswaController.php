@@ -90,8 +90,9 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Evaluasi::where('id_alternatif', $id)->delete();
+        return redirect()->route('siswa.index')->with('success', 'Alternatif Berhasil Dihapus');
     }
 }
