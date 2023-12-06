@@ -21,9 +21,11 @@
                         <div class="card-header">
                             <h4>Daftar Kriteria</h4>
                             <div class="card-header-action">
-                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button>
+                                {{-- <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button> --}}
+                                <button type="button" class="btn btn-icon icon-left btn-primary disabled" disabled aria-disabled="true">Tambah Kriteria</button>
                             </div>
                         </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-md" id="keluarga">

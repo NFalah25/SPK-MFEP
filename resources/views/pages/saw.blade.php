@@ -67,20 +67,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($evaluasi as $key => $item)
+                                        @foreach ($normalisasi as $key => $item)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $item->alternatif }}</td>
-                                                <td>{{ $item->C1 }}</td>
-                                                <td>{{ $item->C2 }}</td>
-                                                <td>{{ $item->C3 }}</td>
-                                                <td>{{ $item->C4 }}</td>
-                                                <td>{{ $item->C5 }}</td>
-                                                <td>{{ $item->C6 }}</td>
-                                                <td>{{ $item->C7 }}</td>
-                                                <td>{{ $item->C8 }}</td>
-                                                <td>{{ $item->C9 }}</td>
-                                                <td>{{ $item->C10 }}</td>
+                                                <td>{{ $item->C1*1 }}</td>
+                                                <td>{{ $item->C2*1 }}</td>
+                                                <td>{{ $item->C3*1 }}</td>
+                                                <td>{{ $item->C4*1 }}</td>
+                                                <td>{{ $item->C5*1 }}</td>
+                                                <td>{{ $item->C6*1 }}</td>
+                                                <td>{{ $item->C7*1 }}</td>
+                                                <td>{{ $item->C8*1 }}</td>
+                                                <td>{{ $item->C9*1 }}</td>
+                                                <td>{{ $item->C10*1 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
