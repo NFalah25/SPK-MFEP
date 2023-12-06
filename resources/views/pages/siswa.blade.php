@@ -21,7 +21,7 @@
                         <div class="card-header">
                             <h4>Daftar Siswa</h4>
                             <div class="card-header-action">
-                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Isi Nilai Alternatif</button>
+                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Isi Nilai Kandidat</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                 <table class="table table-striped table-md" id="keluarga">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>No</th>
                                             <th>Nama Siswa</th>
                                             @foreach ($kriteria as $key => $item)
                                                 <th>{{ $item->kriteria }}</th>
@@ -41,15 +41,23 @@
                                         @foreach ($evaluasi as $key => $item)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $item->id_alternatif }}</td>
-                                                <td>{{ $item->id_kriteria }}</td>
-                                                <td>{{ $item->nilai }}</td>
+                                                <td>{{ $item->alternatif }}</td>
+                                                <td>{{ $item->C1 }}</td>
+                                                <td>{{ $item->C2 }}</td>
+                                                <td>{{ $item->C3 }}</td>
+                                                <td>{{ $item->C4 }}</td>
+                                                <td>{{ $item->C5 }}</td>
+                                                <td>{{ $item->C6 }}</td>
+                                                <td>{{ $item->C7 }}</td>
+                                                <td>{{ $item->C8 }}</td>
+                                                <td>{{ $item->C9 }}</td>
+                                                <td>{{ $item->C10 }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="{{ route('alternatif.edit', $item->id) }}" class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center justify-content-center" style="height: 30px; width: 30px">
+                                                        <a href="{{ route('alternatif.edit', $item->id_alternatif) }}" class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center justify-content-center" style="height: 30px; width: 30px">
                                                             <i class="fas fa-pen"></i>
                                                         </a>
-                                                        <form action="{{ route('alternatif.destroy', $item->id) }}"
+                                                        <form action="{{ route('alternatif.destroy', $item->id_alternatif) }}"
                                                             method="POST">
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -71,7 +79,7 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -83,9 +91,8 @@
                         <div class="form-group">
                             <label>Alternatif</label>
                             <select class="form-control select2 @error('id_alternatif') is-invalid @enderror" name="id_alternatif">
-                                <option value="">Pilih Alternatif</option>
                                 @foreach ($alternatif as $key => $item)
-                                    <option value="{{ $item->id }}">{{ $item->alternatif }}</option>                                    
+                                    <option value="{{ $item->id_alternatif }}">{{ $item->alternatif }}</option>                                    
                                 @endforeach
                             </select>
                             @error('id_alternatif')
@@ -96,10 +103,9 @@
                         </div>
                         <div class="form-group">
                             <label>Kriteria</label>
-                            <select class="form-control select2 @error('id_kriteria') is-invalid @enderror" name="id_kriteria">
-                                <option value="">Pilih Kriteria</option>
+                            <select id="mySelect2" class="form-control select2 @error('id_kriteria') is-invalid @enderror" name="id_kriteria">
                                 @foreach ($kriteria as $key => $item)
-                                    <option value="{{ $item->id }}">{{ $item->kriteria }}</option>                                    
+                                    <option value="{{ $item->id_kriteria }}">{{ $item->kriteria }}</option>                                    
                                 @endforeach
                             </select>
                             @error('id_kriteria')

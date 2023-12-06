@@ -13,6 +13,7 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="/assets/css/select.bootstrap4.min.css">
     @stack('customStyle')
 
     <!-- Template CSS -->
@@ -67,6 +68,7 @@
     <!-- JS Libraies -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/assets/js/page/modules-sweetalert.js"></script>
+    <script src="/assets/js/select.bootstrap4.min.js"></script>
 
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>

@@ -5,10 +5,10 @@
 @endphp
 
 <div class="sidebar-brand">
-    <a href="/home"><img src="/assets/img/polinema.png" alt="" width="30"></a>
+    <a href="/home"><img src="/assets/img/polinema.png" alt="logo" width="30"></a>
 </div>
 <div class="sidebar-brand sidebar-brand-sm">
-    <a href="/home"><img src="/assets/img/polinema.png" alt="" width="30"></a>
+    <a href="/home"><img src="/assets/img/polinema.png" alt="logo" width="30"></a>
 </div>
 <ul class="sidebar-menu">
     <li class="{{ request()->is('home') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-home"></i>
@@ -23,7 +23,7 @@
     <li class="{{ request()->is('alternatif') ? 'active' : '' }} || {{ $alternatif ? 'active' : '' }}"><a class="nav-link" href="{{ route('alternatif.index') }}"><i class="fas fa-list"></i>
         <span>Alternatif</span></a>
     </li>
-    <li class="{{ request()->is('saw') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-table"></i>
+    <li class="{{ request()->is('perhitungan-saw') ? 'active' : '' }}"><a class="nav-link" href="{{ route('perhitungan-saw.index') }}"><i class="fas fa-table"></i>
         <span>Perhitungan SAW</span></a>
     </li>
     <li class="{{ request()->is('mfep') ? 'active' : '' }}"><a class="nav-link" href="/home"><i class="fas fa-table"></i>
