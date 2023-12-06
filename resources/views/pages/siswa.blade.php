@@ -4,10 +4,6 @@
     <section class="section">
         <div class="section-header">
             <h1>Data Siswa</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Siswa</a></div>
-                <div class="breadcrumb-item">Tabel</div>
-            </div>
         </div>
         <div class="section-body">
             <div class="row">
@@ -54,9 +50,7 @@
                                                 <td>{{ $item->C10 }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="{{ route('alternatif.edit', $item->id_alternatif) }}" class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center justify-content-center" style="height: 30px; width: 30px">
-                                                            <i class="fas fa-pen"></i>
-                                                        </a>
+                                                        <button class="btn btn-sm btn-secondary btn-icon d-flex align-items-center justify-content-center ml-2 mr-2" data-toggle="modal" data-target="#exampleModalCenter2" style="height: 30px; width: 30px"><i class="fas fa-pen"></i></button>
                                                         <form action="{{ route('siswa.destroy', $item->id_alternatif) }}"
                                                             method="POST">
                                                             <input type="hidden" name="_method" value="DELETE">
@@ -84,6 +78,61 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Isi Nilai Kandidat</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('siswa.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>Alternatif</label>
+                            <select class="form-control select2 @error('id_alternatif') is-invalid @enderror" name="id_alternatif">
+                                @foreach ($alternatif as $key => $item)
+                                    <option value="{{ $item->id_alternatif }}">{{ $item->alternatif }}</option>                                    
+                                @endforeach
+                            </select>
+                            @error('id_alternatif')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Kriteria</label>
+                            <select id="mySelect2" class="form-control select2 @error('id_kriteria') is-invalid @enderror" name="id_kriteria">
+                                @foreach ($kriteria as $key => $item)
+                                    <option value="{{ $item->id_kriteria }}">{{ $item->kriteria }}</option>                                    
+                                @endforeach
+                            </select>
+                            @error('id_kriteria')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group m-0">
+                            <label for="nilai">Nilai</label>
+                            <input type="number" class="form-control @error('nilai') is-invalid @enderror"
+                                id="nilai" name="nilai" spellcheck="false" autocomplete="off" placeholder="Nilai">
+                            @error('nilai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Nilai Kandidat</h5>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('siswa.store') }}" method="post">

@@ -4,10 +4,6 @@
     <section class="section">
         <div class="section-header">
             <h1>Kriteria</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item active"><a href="#">Kriteria</a></div>
-                <div class="breadcrumb-item">Tabel</div>
-            </div>
         </div>
         <div class="section-body">
             <div class="row">
@@ -21,9 +17,11 @@
                         <div class="card-header">
                             <h4>Daftar Kriteria</h4>
                             <div class="card-header-action">
-                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button>
+                                {{-- <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button> --}}
+                                <button type="button" class="btn btn-icon icon-left btn-primary disabled" disabled>Tambah Kriteria</button>
                             </div>
                         </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-md" id="keluarga">
@@ -50,7 +48,7 @@
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
                                                         </a>
                                                         <a href="#"
-                                                            class="btn btn-sm btn-info btn-icon ml-2 d-flex align-items-center">
+                                                            class="btn btn-sm btn-info btn-icon ml-2 d-flex align-items-center disabled">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Sub Kriteria
                                                         </a>
                                                     </div>

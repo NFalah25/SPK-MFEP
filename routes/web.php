@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SawController;
+use App\Http\Controllers\MfepController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AlternatifController;
+use App\Http\Controllers\PerbandinganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +31,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('kriteria', KriteriaController::class);
     Route::resource('alternatif', AlternatifController::class);
     Route::resource('perhitungan-saw', SawController::class);
+    Route::resource('perhitungan-mfep', MfepController::class);
+    Route::resource('perbandingan', PerbandinganController::class);
     Route::resource('pengguna', UserController::class);
 });
