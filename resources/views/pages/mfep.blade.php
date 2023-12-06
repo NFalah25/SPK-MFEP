@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary m-0">
-                        <div class="card-body">
+                        <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
                                 <table class="table table-striped table-md" id="keluarga">
                                     <thead>
@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary">
-                        <div class="card-body">
+                        <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
                                 <table class="table table-striped table-md" id="keluarga">
                                     <thead>

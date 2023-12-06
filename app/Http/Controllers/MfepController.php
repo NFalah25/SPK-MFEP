@@ -71,7 +71,7 @@ class MfepController extends Controller
         ";
         $normalisasi = DB::select($R);
 
-        return view('pages.saw', ['alternatif' => $alternatif, 'kriteria' => $kriteria, 'evaluasi' => $evaluasi, 'normalisasi' => $normalisasi]);
+        return view('pages.mfep', ['alternatif' => $alternatif, 'kriteria' => $kriteria, 'evaluasi' => $evaluasi, 'normalisasi' => $normalisasi]);
     }
 
     /**
