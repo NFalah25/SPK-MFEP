@@ -36,7 +36,7 @@
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif
                                                 @endforeach
-                                                <td>{{ ceil($P[$i])/100 }}</td>
+                                                <td>{{ ceil($P[$i]) / 100 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -58,15 +58,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($R as $i => $r)
+                                        @foreach ($mfep as $index => $data)
                                             <tr>
-                                                <td>{{ $V[$i] }}</td>
-                                                @foreach ($A as $item)
-                                                    @if ($item->id_alternatif == $i)
-                                                        <td>{{ $item->alternatif }}</td>
-                                                    @endif
-                                                @endforeach
-                                                <td>{{ ceil($P[$i])/100 }}</td>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $data->nama_alternatif }}</td>
+                                                <td>{{ $data->total_hasil*0.01 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -77,7 +73,7 @@
                 </div>
             </div>
         </div>
-    </section>    
+    </section>
 @endsection
 
 @push('customStyle')

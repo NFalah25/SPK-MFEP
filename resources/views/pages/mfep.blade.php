@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <h2 class="section-title">Matrix Ternormalisasi (R)</h2>
+            <h2 class="section-title">Perkalian Matriks Keputusan dan Bobot</h2>
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary">

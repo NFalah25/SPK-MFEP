@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\Evaluasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -86,14 +87,21 @@ class PerbandinganController extends Controller
                 $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
             }
         }
-        
+
         $V = collect($P)->map(function ($nilai) use ($P) {
             return collect($P)->filter(function ($n) use ($nilai) {
                 return $n > $nilai;
             })->count() + 1;
         })->toArray();
 
-        return view('pages.perbandingan', compact('A', 'X', 'R', 'W', 'P', 'V', 'm'));
+        $mfep = Evaluasi::join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
+        ->join('kriteria', 'evaluasi.id_kriteria', '=', 'kriteria.id_kriteria')
+        ->select('alternatif.alternatif as nama_alternatif', DB::raw('SUM(evaluasi.nilai * kriteria.bobot) as total_hasil'))
+        ->groupBy('alternatif.id_alternatif', 'alternatif.alternatif')
+        ->orderBy('total_hasil', 'desc')
+        ->get();
+
+        return view('pages.perbandingan', compact('A', 'X', 'R', 'W', 'P', 'V', 'm', 'mfep'));
     }
 
     /**
