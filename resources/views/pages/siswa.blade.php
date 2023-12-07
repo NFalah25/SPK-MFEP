@@ -138,7 +138,7 @@
                     <form action="{{ route('siswa.ubah') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label>Nama Kandidat</label>
+                            <label>Alternatif</label>
                             <input id="id_alternatif" name="id_alternatif" style="display: none">
                             <input type="text" class="form-control @error('nilai') is-invalid @enderror"
                                 id="alternatif" name="alternatif" spellcheck="false" autocomplete="off">
