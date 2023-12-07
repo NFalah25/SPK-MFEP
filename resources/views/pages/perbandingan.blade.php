@@ -36,7 +36,7 @@
                                             @endfor
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                @foreach ($data as $item)
+                                                @foreach ($alternatif as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif
@@ -66,7 +66,7 @@
                                         @foreach ($R as $i => $r)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                @foreach ($data as $item)
+                                                @foreach ($alternatif as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif

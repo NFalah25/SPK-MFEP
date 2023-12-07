@@ -14,6 +14,7 @@ class PerbandinganController extends Controller
      */
     public function index()
     {
+        $alternatif = Alternatif::all();
         $evaluasi = DB::table('evaluasi')
         ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
         ->select(
@@ -81,8 +82,7 @@ class PerbandinganController extends Controller
         $P = [];
         $m = count($W);
 
-        $data = Alternatif::all();
-        return view('pages.perbandingan', compact('X', 'R', 'W', 'P', 'm', 'data'));
+        return view('pages.perbandingan', compact('X', 'R', 'W', 'P', 'm', 'alternatif'));
     }
 
     /**
