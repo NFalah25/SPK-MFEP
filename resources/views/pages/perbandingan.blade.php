@@ -36,7 +36,7 @@
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif
                                                 @endforeach
-                                                <td>{{ $P[$i] }}</td>
+                                                <td>{{ ceil($P[$i]) / 100 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
