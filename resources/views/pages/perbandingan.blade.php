@@ -64,11 +64,6 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($R as $i => $r)
-                                            @for ($j = 0; $j < $m; $j++)
-                                                @php
-                                                    $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
-                                                @endphp
-                                            @endfor
                                             <tr>
                                                 <td>{{ $i }}</td>
                                                 @foreach ($data as $item)
