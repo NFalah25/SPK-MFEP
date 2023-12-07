@@ -141,8 +141,8 @@
                         <div class="form-group">
                             <label>Alternatif</label>
                             <input id="id_alternatif" name="id_alternatif" style="display: none">
-                            <input type="text" class="form-control @error('nilai') is-invalid @enderror"
-                                id="nama" name="alternatif" spellcheck="false" autocomplete="off">
+                            <span type="text" class="form-control @error('nilai') is-invalid @enderror"
+                                id="nama" name="alternatif" spellcheck="false" autocomplete="off"></span>
                             @error('id_alternatif')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -190,7 +190,7 @@
             var nama = $(this).data('nama');
 
             $("#id_alternatif").val(id);
-            $("#nama").val(nama);
+            $("#nama").text(nama);
         });
     </script>
     <script src="/assets/js/select2.min.js"></script>
