@@ -18,27 +18,27 @@ class PerbandinganController extends Controller
         $A = Alternatif::all();
 
         $evaluasi = DB::table('evaluasi')
-        ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
-        ->select(
-            'evaluasi.id_alternatif',
-            'alternatif.alternatif',
-            DB::raw('SUM(IF(evaluasi.id_kriteria=1, evaluasi.nilai, 0)) AS C1'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=2, evaluasi.nilai, 0)) AS C2'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=3, evaluasi.nilai, 0)) AS C3'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=4, evaluasi.nilai, 0)) AS C4'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=5, evaluasi.nilai, 0)) AS C5'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=6, evaluasi.nilai, 0)) AS C6'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=7, evaluasi.nilai, 0)) AS C7'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=8, evaluasi.nilai, 0)) AS C8'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=9, evaluasi.nilai, 0)) AS C9'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=10, evaluasi.nilai, 0)) AS C10')
-        )
-        ->groupBy('evaluasi.id_alternatif', 'alternatif.alternatif')
-        ->orderBy('evaluasi.id_alternatif')
-        ->get();
+            ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
+            ->select(
+                'evaluasi.id_alternatif',
+                'alternatif.alternatif',
+                DB::raw('SUM(IF(evaluasi.id_kriteria=1, evaluasi.nilai, 0)) AS C1'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=2, evaluasi.nilai, 0)) AS C2'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=3, evaluasi.nilai, 0)) AS C3'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=4, evaluasi.nilai, 0)) AS C4'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=5, evaluasi.nilai, 0)) AS C5'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=6, evaluasi.nilai, 0)) AS C6'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=7, evaluasi.nilai, 0)) AS C7'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=8, evaluasi.nilai, 0)) AS C8'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=9, evaluasi.nilai, 0)) AS C9'),
+                DB::raw('SUM(IF(evaluasi.id_kriteria=10, evaluasi.nilai, 0)) AS C10')
+            )
+            ->groupBy('evaluasi.id_alternatif', 'alternatif.alternatif')
+            ->orderBy('evaluasi.id_alternatif')
+            ->get();
 
         $X = [];
-        foreach($evaluasi as $key => $item) {
+        foreach ($evaluasi as $key => $item) {
             $X[1][] = $item->C1;
             $X[2][] = $item->C2;
             $X[3][] = $item->C3;
@@ -77,9 +77,9 @@ class PerbandinganController extends Controller
         }
 
         $W = DB::table('kriteria')
-        ->orderBy('id_kriteria')
-        ->pluck('bobot')
-        ->toArray();
+            ->orderBy('id_kriteria')
+            ->pluck('bobot')
+            ->toArray();
 
         $P = [];
         $m = count($W);
@@ -96,13 +96,25 @@ class PerbandinganController extends Controller
         })->toArray();
 
         $mfep = Evaluasi::join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
-        ->join('kriteria', 'evaluasi.id_kriteria', '=', 'kriteria.id_kriteria')
-        ->select('alternatif.alternatif as nama_alternatif', DB::raw('SUM(evaluasi.nilai * kriteria.bobot) as total_hasil'))
-        ->groupBy('alternatif.id_alternatif', 'alternatif.alternatif')
-        ->orderBy('alternatif.id_alternatif', 'asc')
-        ->get();
+            ->join('kriteria', 'evaluasi.id_kriteria', '=', 'kriteria.id_kriteria')
+            ->select('alternatif.alternatif as nama_alternatif', DB::raw('SUM(evaluasi.nilai * kriteria.bobot) as total_hasil'))
+            ->groupBy('alternatif.id_alternatif', 'alternatif.alternatif')
+            ->orderBy('alternatif.id_alternatif', 'asc')
+            ->get();
 
-        return view('pages.perbandingan', compact('A', 'R', 'P', 'V', 'mfep'));
+        $mfepPeringkat = DB::table('evaluasi')
+            ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
+            ->join('kriteria', 'evaluasi.id_kriteria', '=', 'kriteria.id_kriteria')
+            ->select(
+                'alternatif.alternatif',
+                DB::raw('SUM(evaluasi.nilai * kriteria.bobot) AS total_hasil'),
+                DB::raw('ROW_NUMBER() OVER (ORDER BY SUM(evaluasi.nilai * kriteria.bobot) DESC) AS peringkat')
+            )
+            ->groupBy('alternatif.id_alternatif', 'alternatif.alternatif')
+            ->orderBy('alternatif.id_alternatif')
+            ->get();
+
+        return view('pages.perbandingan', compact('A', 'R', 'P', 'V', 'mfep', 'mfepPeringkat'));
     }
 
     /**
