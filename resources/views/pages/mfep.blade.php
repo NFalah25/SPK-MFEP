@@ -119,6 +119,33 @@
                     </div>
                 </div>
             </div>
+            <h2 class="section-title">Hasil</h2>
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-body" style="padding: 25px 25px 10px 25px">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-md">
+                                <thead>
+                                    <tr>
+                                        <th>Peringkat</th>
+                                        <th>Nama Alternatif</th>
+                                        <th>Nilai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($mfep as $index => $data)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $data->nama_alternatif }}</td>
+                                            <td>{{ $data->total_hasil*0.01 }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
