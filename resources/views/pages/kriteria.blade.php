@@ -17,7 +17,6 @@
                         <div class="card-header">
                             <h4>Daftar Kriteria</h4>
                             <div class="card-header-action">
-                                {{-- <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Kriteria</button> --}}
                                 <button type="button" class="btn btn-icon icon-left btn-primary disabled" disabled>Tambah Kriteria</button>
                             </div>
                         </div>
@@ -43,12 +42,14 @@
                                                 <td>{{ $item->bobot }}%</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="{{ route('kriteria.edit', $item->id_kriteria) }}"
-                                                            class="btn btn-sm btn-secondary btn-icon ml-2 d-flex align-items-center">
+                                                        <button type="button" data-id="{{ $item->id_kriteria }}" data-kriteria="{{ $item->kriteria }}"
+                                                            data-atribut="{{ $item->atribut }}" data-bobot="{{ $item->bobot }}"
+                                                            data-toggle="modal" data-target="#exampleModalCenter"
+                                                            class="btn btn-sm btn-secondary btn-icon d-flex align-items-center ml-2 edit">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
-                                                        </a>
+                                                        </button>
                                                         <a href="#"
-                                                            class="btn btn-sm btn-info btn-icon ml-2 d-flex align-items-center disabled">
+                                                            class="btn btn-sm btn-info btn-icon d-flex align-items-center ml-2 disabled">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Sub Kriteria
                                                         </a>
                                                     </div>
@@ -69,13 +70,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Tambah Kriteria</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Kriteria</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('kriteria.store') }}" method="post">
+                    <form action="{{ route('kriteria.ubah') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="kriteria">Nama Kriteria</label>
+                            <input id="id_kriteria" name="id_kriteria" style="display: none">
                             <input type="text" class="form-control @error('kriteria') is-invalid @enderror"
                                 id="kriteria" name="kriteria" spellcheck="false" autocomplete="off">
                             @error('kriteria')
@@ -86,8 +88,7 @@
                         </div>
                         <div class="form-group">
                             <label>Atribut</label>
-                            <select class="form-control select2 @error('atribut') is-invalid @enderror" name="atribut">
-                                <option value="">-</option>
+                            <select id="atribut" class="form-control select2 @error('atribut') is-invalid @enderror" name="atribut">
                                 <option value="Benefit">Benefit</option>
                                 <option value="Cost">Cost</option>
                             </select>
@@ -119,6 +120,19 @@
 @endsection
 
 @push('customScript')
+    <script>
+        $(document).on("click", ".edit", function() {
+            var id = $(this).data('id');
+            var kriteria = $(this).data('kriteria');
+            var atribut = $(this).data('atribut');
+            var bobot = $(this).data('bobot');
+
+            $("#id_kriteria").val(id);
+            $("#kriteria").val(kriteria);
+            $('#atribut').val(atribut).trigger('change');
+            $("#bobot").val(bobot);
+        });
+    </script>
     <script src="/assets/js/select2.min.js"></script>
 @endpush
 

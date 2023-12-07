@@ -337,9 +337,9 @@ $(function() {
     document.querySelector('.select2-search__field').focus();
   });
 
-  $('#exampleModalCenter').on('shown.bs.modal', function () {
-    $('#alternatif').focus();
-  })  
+  $('#exampleModalCenter, #exampleModalCenter2').on('shown.bs.modal', function () {
+    $('#alternatif, #alternatif2').focus();
+  });
 
   // Function to close the modal
   function closeModal() {

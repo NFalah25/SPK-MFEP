@@ -50,7 +50,8 @@
                                                 <td>{{ $item->C10 }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <button class="btn btn-sm btn-secondary btn-icon d-flex align-items-center justify-content-center ml-2 mr-2 edit" data-id="{{ $item->id_alternatif }}" data-nama="{{ $item->alternatif }}" data-toggle="modal" data-target="#exampleModalCenter2" style="height: 30px; width: 30px"><i class="fas fa-pen"></i></button>
+                                                        <button class="btn btn-sm btn-secondary btn-icon d-flex align-items-center justify-content-center ml-2 mr-2 edit" data-id="{{ $item->id_alternatif }}" data-nama="{{ $item->alternatif }}"
+                                                            data-toggle="modal" data-target="#exampleModalCenter2"style="height: 30px; width: 30px"><i class="fas fa-pen"></i></button>
                                                         <form action="{{ route('siswa.destroy', $item->id_alternatif) }}"
                                                             method="POST">
                                                             <input type="hidden" name="_method" value="DELETE">
@@ -141,7 +142,7 @@
                             <label>Alternatif</label>
                             <input id="id_alternatif" name="id_alternatif" style="display: none">
                             <input type="text" class="form-control @error('nilai') is-invalid @enderror"
-                                id="alternatif" name="alternatif" spellcheck="false" autocomplete="off">
+                                id="nama" name="alternatif" spellcheck="false" autocomplete="off">
                             @error('id_alternatif')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -189,7 +190,7 @@
             var nama = $(this).data('nama');
 
             $("#id_alternatif").val(id);
-            $("#alternatif").val(nama);
+            $("#nama").val(nama);
         });
     </script>
     <script src="/assets/js/select2.min.js"></script>

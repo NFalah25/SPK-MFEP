@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Perhitungan SAW</h1>
+            <h1>Simple Additive Weighting</h1>
         </div>
         <div class="section-body">
             <h2 class="section-title">Matrix Keputusan (X)</h2>

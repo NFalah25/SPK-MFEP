@@ -37,10 +37,10 @@
                                                 <td>{{ $item->alternatif }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <a href="{{ route('alternatif.edit', $item->id_alternatif) }}"
-                                                            class="btn btn-sm btn-secondary btn-icon ml-2 mr-2 d-flex align-items-center">
+                                                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter2" data-id="{{ $item->id_alternatif }}" data-nama="{{ $item->alternatif }}"
+                                                            class="btn btn-sm btn-secondary btn-icon d-flex align-items-center ml-2 mr-2 edit">
                                                             <span><i class="fas fa-edit"></i></span>&nbsp;Ubah
-                                                        </a>
+                                                        </button>
                                                         <form action="{{ route('alternatif.destroy', $item->id_alternatif) }}"
                                                           method="POST">
                                                           <input type="hidden" name="_method" value="DELETE">
@@ -91,7 +91,49 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Alternatif</h5>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('alternatif.ubah') }}" method="post">
+                        @csrf
+                        <div class="form-group m-0">
+                            <label for="alternatif2">Nama Alternatif</label>
+                            <input id="id_alternatif" name="id_alternatif" style="display: none">
+                            <input type="text" class="form-control @error('alternatif2') is-invalid @enderror"
+                                id="alternatif2" name="alternatif" spellcheck="false" autocomplete="off">
+                            @error('alternatif2')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('customScript')
+    <script>
+        $(document).on("click", ".edit", function() {
+            var id = $(this).data('id');
+            var nama = $(this).data('nama');
+
+            $("#id_alternatif").val(id);
+            $("#alternatif2").val(nama);
+        });
+    </script>
+@endpush
 
 @push('customStyle')
 @endpush

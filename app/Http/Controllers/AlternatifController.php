@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAlternatifRequest;
-use App\Http\Requests\UpdateAlternatifRequest;
 
 class AlternatifController extends Controller
 {
@@ -14,8 +14,8 @@ class AlternatifController extends Controller
      */
     public function index()
     {
-        $data = Alternatif::all();
-        return view('pages.alternatif.index', compact('data'));
+        $data = Alternatif::orderByDesc('id_alternatif')->get();
+        return view('pages.alternatif', compact('data'));
     }
 
     /**
@@ -48,19 +48,22 @@ class AlternatifController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alternatif $alternatif)
+    public function edit(string $id)
     {
-        return view('pages.alternatif.edit')->with('alternatif', $alternatif);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAlternatifRequest $request, Alternatif $alternatif)
+    public function ubah(Request $request)
     {
-        $validate = $request->validated();
+        $id_alternatif = $request['id_alternatif'];
+        $alternatif = $request['alternatif'];
 
-        $alternatif->update($validate);
+        Alternatif::where('id_alternatif', $id_alternatif)
+                ->update(['alternatif' => $alternatif]);
+
         return redirect()->route('alternatif.index')->with('success', 'Alternatif Berhasil Diupdate');
     }
 

@@ -16,6 +16,7 @@ class PerbandinganController extends Controller
     public function index()
     {
         $A = Alternatif::all();
+
         $evaluasi = DB::table('evaluasi')
         ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
         ->select(
@@ -98,10 +99,10 @@ class PerbandinganController extends Controller
         ->join('kriteria', 'evaluasi.id_kriteria', '=', 'kriteria.id_kriteria')
         ->select('alternatif.alternatif as nama_alternatif', DB::raw('SUM(evaluasi.nilai * kriteria.bobot) as total_hasil'))
         ->groupBy('alternatif.id_alternatif', 'alternatif.alternatif')
-        ->orderBy('total_hasil', 'desc')
+        ->orderBy('alternatif.id_alternatif', 'asc')
         ->get();
 
-        return view('pages.perbandingan', compact('A', 'X', 'R', 'W', 'P', 'V', 'm', 'mfep'));
+        return view('pages.perbandingan', compact('A', 'R', 'P', 'V', 'mfep'));
     }
 
     /**

@@ -81,12 +81,12 @@
                     </div>
                     <div class="card-body" id="top-5-scroll">
                         <ul class="list-unstyled list-unstyled-border m-0">
-                            @foreach ($alternatif as $key => $item)
+                            @foreach ($peringkat as $key => $item)
                                 <li class="media">
                                     <table>
                                         <tr>
-                                            <td class="media-title" style="color: inherit">{{  $key + 1  }}.&emsp;</td>
-                                            <td class="media-title" style="color: inherit">{{ $item }}</td>
+                                            <td class="media-title" style="color: inherit">{{ $key + 1 }}.&emsp;</td>
+                                            <td class="media-title" style="color: inherit">{{ $item->nama_alternatif }}</td>
                                         </tr>
                                     </table>
                                 </li>
@@ -100,5 +100,6 @@
     </section>
     <script>
         var alternatif = <?php echo json_encode($alternatif); ?>;
+        var nilai = <?php echo json_encode($nilai); ?>;
    </script>
 @endsection

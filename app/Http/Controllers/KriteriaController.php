@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kriteria;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKriteriaRequest;
-use App\Http\Requests\UpdateKriteriaRequest;
 
 class KriteriaController extends Controller
 {
@@ -15,7 +15,7 @@ class KriteriaController extends Controller
     public function index()
     {
         $data = Kriteria::all();
-        return view('pages.kriteria.index', compact('data'));
+        return view('pages.kriteria', compact('data'));
     }
 
     /**
@@ -52,18 +52,26 @@ class KriteriaController extends Controller
      */
     public function edit(string $id)
     {
-        $kriteria = Kriteria::find($id);
-        return view('pages.kriteria.edit', compact('kriteria'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKriteriaRequest $request, string $id_kriteria)
+    public function ubah(Request $request)
     {
-        $validate = $request->validated();
+        $id_kriteria = $request['id_kriteria'];
+        $kriteria = $request['kriteria'];
+        $atribut = $request['atribut'];
+        $bobot = $request['bobot'];
 
-        Kriteria::find($id_kriteria)->update($validate);
+        Kriteria::where('id_kriteria', $id_kriteria)
+                ->update([
+                    'kriteria' => $kriteria,
+                    'atribut' => $atribut,
+                    'bobot' => $bobot
+                ]);
+
         return redirect()->route('kriteria.index')->with('success', 'Kriteria Berhasil Diupdate');
     }
 

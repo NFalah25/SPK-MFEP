@@ -27,7 +27,6 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [DashboardController::class, 'index']);
-    Route::post('/siswa/ubah', [SiswaController::class, 'ubah'])->name('siswa.ubah');
     Route::resource('siswa', SiswaController::class);
     Route::resource('kriteria', KriteriaController::class);
     Route::resource('alternatif', AlternatifController::class);
@@ -35,4 +34,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('perhitungan-mfep', MfepController::class);
     Route::resource('perbandingan', PerbandinganController::class);
     Route::resource('pengguna', UserController::class);
+    Route::post('/siswa/ubah', [SiswaController::class, 'ubah'])->name('siswa.ubah');
+    Route::post('/kriteria/ubah', [KriteriaController::class, 'ubah'])->name('kriteria.ubah');
+    Route::post('/alternatif/ubah', [AlternatifController::class, 'ubah'])->name('alternatif.ubah');
 });
