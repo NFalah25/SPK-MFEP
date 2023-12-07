@@ -29,19 +29,9 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($R as $i => $r)
-                                            @for ($j = 0; $j < $m; $j++)
-                                                @php
-                                                    $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
-                                                    $V = collect($P)->map(function ($nilai) use ($P) {
-                                                        return collect($P)->filter(function ($n) use ($nilai) {
-                                                            return $n > $nilai;
-                                                        })->count() + 1;
-                                                    })->toArray();
-                                                @endphp
-                                            @endfor
                                             <tr>
                                                 <td>{{ $V[$i] }}</td>
-                                                @foreach ($alternatif as $item)
+                                                @foreach ($A as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif
@@ -71,7 +61,7 @@
                                         @foreach ($R as $i => $r)
                                             <tr>
                                                 <td>{{ $V[$i] }}</td>
-                                                @foreach ($alternatif as $item)
+                                                @foreach ($A as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
                                                     @endif

@@ -14,7 +14,7 @@ class PerbandinganController extends Controller
      */
     public function index()
     {
-        $alternatif = Alternatif::all();
+        $A = Alternatif::all();
         $evaluasi = DB::table('evaluasi')
         ->join('alternatif', 'evaluasi.id_alternatif', '=', 'alternatif.id_alternatif')
         ->select(
@@ -81,8 +81,19 @@ class PerbandinganController extends Controller
 
         $P = [];
         $m = count($W);
+        foreach ($R as $i => $r) {
+            for ($j = 0; $j < $m; $j++) {
+                $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
+            }
+        }
+        
+        $V = collect($P)->map(function ($nilai) use ($P) {
+            return collect($P)->filter(function ($n) use ($nilai) {
+                return $n > $nilai;
+            })->count() + 1;
+        })->toArray();
 
-        return view('pages.perbandingan', compact('X', 'R', 'W', 'P', 'm', 'alternatif'));
+        return view('pages.perbandingan', compact('A', 'X', 'R', 'W', 'P', 'V', 'm'));
     }
 
     /**
