@@ -22,7 +22,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-md">
+                                <table class="table table-striped table-md" id="keluarga">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -50,7 +50,7 @@
                                                 <td>{{ $item->C10 }}</td>
                                                 <td class="text-right">
                                                     <div class="d-flex justify-content-end">
-                                                        <button class="btn btn-sm btn-secondary btn-icon d-flex align-items-center justify-content-center ml-2 mr-2" data-toggle="modal" data-target="#exampleModalCenter2" style="height: 30px; width: 30px"><i class="fas fa-pen"></i></button>
+                                                        <button class="btn btn-sm btn-secondary btn-icon d-flex align-items-center justify-content-center ml-2 mr-2 edit" data-id="{{ $item->id_alternatif }}" data-nama="{{ $item->alternatif }}" data-toggle="modal" data-target="#exampleModalCenter2" style="height: 30px; width: 30px"><i class="fas fa-pen"></i></button>
                                                         <form action="{{ route('siswa.destroy', $item->id_alternatif) }}"
                                                             method="POST">
                                                             <input type="hidden" name="_method" value="DELETE">
@@ -135,15 +135,13 @@
                     <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Nilai Kandidat</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('siswa.store') }}" method="post">
+                    <form action="{{ route('siswa.ubah') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label>Alternatif</label>
-                            <select class="form-control select2 @error('id_alternatif') is-invalid @enderror" name="id_alternatif">
-                                @foreach ($alternatif as $key => $item)
-                                    <option value="{{ $item->id_alternatif }}">{{ $item->alternatif }}</option>                                    
-                                @endforeach
-                            </select>
+                            <label>Nama Kandidat</label>
+                            <input id="id_alternatif" name="id_alternatif" style="display: none">
+                            <input type="text" class="form-control @error('nilai') is-invalid @enderror"
+                                id="alternatif" name="alternatif" spellcheck="false" autocomplete="off">
                             @error('id_alternatif')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -185,6 +183,15 @@
 @endsection
 
 @push('customScript')
+    <script>
+        $(document).on("click", ".edit", function() {
+            var id = $(this).data('id');
+            var nama = $(this).data('nama');
+
+            $("#id_alternatif").val(id);
+            $("#alternatif").val(nama);
+        });
+    </script>
     <script src="/assets/js/select2.min.js"></script>
 @endpush
 

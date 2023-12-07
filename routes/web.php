@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', [DashboardController::class, 'index']);
+    Route::post('/siswa/ubah', [SiswaController::class, 'ubah'])->name('siswa.ubah');
     Route::resource('siswa', SiswaController::class);
     Route::resource('kriteria', KriteriaController::class);
     Route::resource('alternatif', AlternatifController::class);

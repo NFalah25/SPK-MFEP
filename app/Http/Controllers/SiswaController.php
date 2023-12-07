@@ -55,11 +55,20 @@ class SiswaController extends Controller
      */
     public function store(StoreNilaiRequest $request)
     {
+        $existingEntry = Evaluasi::where('id_alternatif', $request['id_alternatif'])
+        ->where('id_kriteria', $request['id_kriteria'])
+        ->exists();
+
+        if ($existingEntry) {
+            return redirect(route('siswa.index'))->with('error', 'Nilai Gagal Ditambahkan');
+        }
+
         Evaluasi::create([
             'id_alternatif' => $request['id_alternatif'],
             'id_kriteria' => $request['id_kriteria'],
             'nilai' => $request['nilai'],
         ]);
+
         return redirect(route('siswa.index'))->with('success', 'Nilai Berhasil Ditambahkan');
     }
 
@@ -82,9 +91,17 @@ class SiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function ubah(Request $request)
     {
-        //
+        $id_alternatif = $request['id_alternatif'];
+        $id_kriteria = $request['id_kriteria'];
+        $nilai = $request['nilai'];
+
+        Evaluasi::where('id_alternatif', $id_alternatif)
+                ->where('id_kriteria', $id_kriteria)
+                ->update(['nilai' => $nilai]);
+
+        return redirect()->route('siswa.index')->with('success', 'Nilai Berhasil Diupdate');
     }
 
     /**
