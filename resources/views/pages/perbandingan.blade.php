@@ -32,10 +32,15 @@
                                             @for ($j = 0; $j < $m; $j++)
                                                 @php
                                                     $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
+                                                    $V = collect($P)->map(function ($nilai) use ($P) {
+                                                        return collect($P)->filter(function ($n) use ($nilai) {
+                                                            return $n > $nilai;
+                                                        })->count() + 1;
+                                                    })->toArray();
                                                 @endphp
                                             @endfor
                                             <tr>
-                                                <td>{{ $i }}</td>
+                                                <td>{{ $V[$i] }}</td>
                                                 @foreach ($alternatif as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
@@ -65,7 +70,7 @@
                                     <tbody>
                                         @foreach ($R as $i => $r)
                                             <tr>
-                                                <td>{{ $i }}</td>
+                                                <td>{{ $V[$i] }}</td>
                                                 @foreach ($alternatif as $item)
                                                     @if ($item->id_alternatif == $i)
                                                         <td>{{ $item->alternatif }}</td>
