@@ -22,16 +22,16 @@ class SawController extends Controller
         ->select(
             'evaluasi.id_alternatif',
             'alternatif.alternatif',
-            DB::raw('SUM(IF(evaluasi.id_kriteria=1, evaluasi.nilai, 0)) AS C1'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=2, evaluasi.nilai, 0)) AS C2'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=3, evaluasi.nilai, 0)) AS C3'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=4, evaluasi.nilai, 0)) AS C4'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=5, evaluasi.nilai, 0)) AS C5'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=6, evaluasi.nilai, 0)) AS C6'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=7, evaluasi.nilai, 0)) AS C7'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=8, evaluasi.nilai, 0)) AS C8'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=9, evaluasi.nilai, 0)) AS C9'),
-            DB::raw('SUM(IF(evaluasi.id_kriteria=10, evaluasi.nilai, 0)) AS C10')
+            DB::raw('SUM( IF(evaluasi.id_kriteria=1, evaluasi.nilai, 0)) AS C1'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=2, evaluasi.nilai, 0)) AS C2'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=3, evaluasi.nilai, 0)) AS C3'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=4, evaluasi.nilai, 0)) AS C4'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=5, evaluasi.nilai, 0)) AS C5'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=6, evaluasi.nilai, 0)) AS C6'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=7, evaluasi.nilai, 0)) AS C7'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=8, evaluasi.nilai, 0)) AS C8'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=9, evaluasi.nilai, 0)) AS C9'),
+            DB::raw('SUM( IF(evaluasi.id_kriteria=10, evaluasi.nilai, 0)) AS C10')
         )
         ->groupBy('evaluasi.id_alternatif', 'alternatif.alternatif')
         ->orderBy('evaluasi.id_alternatif')
