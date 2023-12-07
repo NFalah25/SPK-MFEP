@@ -1,63 +1,50 @@
 "use strict";
 
-var ctx = document.getElementById("nilai").getContext('2d');
-var myChart = new Chart(ctx, {
+console.log(alternatif);
+
+var statistics_chart = document.getElementById("nilai").getContext('2d');
+var myChart = new Chart(statistics_chart, {
   type: 'line',
   data: {
-    labels: ['Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan', 'Amanda Nababan'],
+    labels: alternatif,
     datasets: [{
       label: 'Nilai',
-      data: [85, 78, 92, 88, 95, 85, 78, 92, 88, 95],
-      borderWidth: 2,
-      backgroundColor: 'rgba(0, 123, 255, .8)',
-      borderWidth: 0,
-      borderColor: 'transparent',
-      pointBorderWidth: 0,
-      pointRadius: 0,
-      pointBackgroundColor: 'rgba(0, 123, 255, .8)',
-      pointHoverBackgroundColor: 'rgba(0, 123, 255, .8)',
+      data: [52, 84, 66, 93, 76, 91, 75, 68, 70, 79, 55, 88, 75, 70, 97, 92, 69, 63, 88, 99],
+      borderWidth: 1,
+      borderColor: '#0F2C56',
+      backgroundColor: 'rgba(0, 123, 255, .5)',
+      pointBackgroundColor: '#fff',
+      pointBorderColor: '#0F2C56',
+      pointRadius: 4
     }]
   },
   options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: (ctx) => 'Point Style: ' + ctx.chart.data.datasets[0].pointStyle,
-      }
-    },
-
-    maintainAspectRatio: true,
-    tooltips: {
-      mode: 'index',
-      intersect: false,
+    maintainAspectRatio: false,
+    legend: {
+      display: false
     },
     hover: {
       mode: 'nearest',
       intersect: true
     },
-    legend: {
-      display: false,
-      position: 'bottom'
+    tooltips: {
+      mode: 'index',
+      intersect: false,
     },
     scales: {
       yAxes: [{
         gridLines: {
+          display: false,
           drawBorder: false,
-          color: '#f2f2f2',
         },
         ticks: {
-          beginAtZero: true,
-          stepSize: 20,
-          callback: function(value, index, values) {
-            return value;
-          }
+          stepSize: 5
         }
       }],
       xAxes: [{
         gridLines: {
-          display: false,
-          tickMarkLength: 25,
+          color: '#fbfbfb',
+          lineWidth: 2
         }
       }]
     },
