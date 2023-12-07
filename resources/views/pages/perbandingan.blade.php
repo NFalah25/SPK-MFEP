@@ -19,7 +19,7 @@
                     <div class="card card-primary">
                         <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
-                                <table class="table table-striped table-md" id="keluarga">
+                                <table class="table table-striped table-md">
                                     <thead>
                                         <tr>
                                             <th>Peringkat</th>
@@ -28,11 +28,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key => $item)
+                                        @foreach ($R as $i => $r)
+                                            @for ($j = 0; $j < $m; $j++)
+                                                @php
+                                                    $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
+                                                @endphp
+                                            @endfor
                                             <tr>
-                                                <td>{{ $key + 1 }}
-                                                <td>{{ $item->alternatif }}</td>
-                                                <td>100</td>
+                                                <td>{{ $i }}</td>
+                                                @foreach ($data as $item)
+                                                    @if ($item->id_alternatif == $i)
+                                                        <td>{{ $item->alternatif }}</td>
+                                                    @endif
+                                                @endforeach
+                                                <td>{{ ceil($P[$i])/100 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -45,7 +54,7 @@
                     <div class="card card-primary">
                         <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
-                                <table class="table table-striped table-md" id="keluarga">
+                                <table class="table table-striped table-md">
                                     <thead>
                                         <tr>
                                             <th>Peringkat</th>
@@ -54,11 +63,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key => $item)
+                                        @foreach ($R as $i => $r)
+                                            @for ($j = 0; $j < $m; $j++)
+                                                @php
+                                                    $P[$i] = (isset($P[$i]) ? $P[$i] : 0) + $r[$j] * $W[$j];
+                                                @endphp
+                                            @endfor
                                             <tr>
-                                                <td>{{ $key + 1 }}
-                                                <td>{{ $item->alternatif }}</td>
-                                                <td>100</td>
+                                                <td>{{ $i }}</td>
+                                                @foreach ($data as $item)
+                                                    @if ($item->id_alternatif == $i)
+                                                        <td>{{ $item->alternatif }}</td>
+                                                    @endif
+                                                @endforeach
+                                                <td>{{ ceil($P[$i])/100 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -70,35 +88,6 @@
             </div>
         </div>
     </section>    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Tambah Alternatif</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('alternatif.store') }}" method="post">
-                        @csrf
-                        <div class="form-group m-0">
-                            <label for="alternatif">Nama Alternatif</label>
-                            <input type="text" class="form-control @error('alternatif') is-invalid @enderror"
-                                id="alternatif" name="alternatif" spellcheck="false" autocomplete="off">
-                            @error('alternatif')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('customStyle')

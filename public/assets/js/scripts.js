@@ -337,6 +337,16 @@ $(function() {
     document.querySelector('.select2-search__field').focus();
   });
 
+  $('#exampleModalCenter').on('shown.bs.modal', function () {
+    $('#alternatif').focus();
+  })  
+
+  // Function to close the modal
+  function closeModal() {
+    var modal = document.getElementById('exampleModalCenter');
+    modal.style.display = 'none';
+  }  
+
   // Selectric
   if(jQuery().selectric) {
     $(".selectric").selectric({

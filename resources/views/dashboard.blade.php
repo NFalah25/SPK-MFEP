@@ -62,5 +62,28 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Nilai Kandidat Beasiswa</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="nilai"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Peringkat Kandidat</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="nilai"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection

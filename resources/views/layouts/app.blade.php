@@ -71,6 +71,8 @@
     <script src="/assets/js/select.bootstrap4.min.js"></script>
 
     <!-- Template JS File -->
+    <script src="/assets/js/Chart.min.js"></script>
+    <script src="/assets/js/chartjs.js"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 

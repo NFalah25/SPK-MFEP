@@ -12,7 +12,7 @@
                     <div class="card card-primary m-0">
                         <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
-                                <table class="table table-striped table-md" id="keluarga">
+                                <table class="table table-striped table-md">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -52,7 +52,7 @@
                     <div class="card card-primary">
                         <div class="card-body" style="padding: 25px 25px 10px 25px">
                             <div class="table-responsive">
-                                <table class="table table-striped table-md" id="keluarga">
+                                <table class="table table-striped table-md">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -88,67 +88,7 @@
             </div>
         </div>
     </section>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Isi Nilai Kandidat</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('siswa.store') }}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label>Alternatif</label>
-                            <select class="form-control select2 @error('id_alternatif') is-invalid @enderror" name="id_alternatif">
-                                @foreach ($alternatif as $key => $item)
-                                    <option value="{{ $item->id_alternatif }}">{{ $item->alternatif }}</option>                                    
-                                @endforeach
-                            </select>
-                            @error('id_alternatif')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Kriteria</label>
-                            <select id="mySelect2" class="form-control select2 @error('id_kriteria') is-invalid @enderror" name="id_kriteria">
-                                @foreach ($kriteria as $key => $item)
-                                    <option value="{{ $item->id_kriteria }}">{{ $item->kriteria }}</option>                                    
-                                @endforeach
-                            </select>
-                            @error('id_kriteria')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group m-0">
-                            <label for="nilai">Nilai</label>
-                            <input type="number" class="form-control @error('nilai') is-invalid @enderror"
-                                id="nilai" name="nilai" spellcheck="false" autocomplete="off" placeholder="Nilai">
-                            @error('nilai')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
 
-@push('customScript')
-    <script src="/assets/js/select2.min.js"></script>
-@endpush
-
 @push('customStyle')
-    <link rel="stylesheet" href="/assets/css/select2.min.css">
 @endpush
