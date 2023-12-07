@@ -46,6 +46,37 @@
                     </div>
                 </div>
             </div>
+            <h2 class="section-title">Daftar Nilai Bobot Kriteria</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-body" style="padding: 25px 25px 10px 25px">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-md">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Kriteria</th>
+                                            <th>Atribut</th>
+                                            <th>Bobot</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($kriteria as $key => $item)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $item->kriteria }}</td>
+                                                <td>{{ $item->atribut }}</td>
+                                                <td>{{ $item->bobot }}%</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h2 class="section-title">Perkalian Matriks Keputusan dan Bobot</h2>
             <div class="row">
                 <div class="col-12">
@@ -60,23 +91,25 @@
                                             @foreach ($kriteria as $key => $item)
                                                 <th>{{ $item->kriteria }}</th>
                                             @endforeach
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($normalisasi as $key => $item)
+                                        @foreach ($hasil as $key => $item)
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $item->alternatif }}</td>
-                                                <td>{{ $item->C1*1 }}</td>
-                                                <td>{{ $item->C2*1 }}</td>
-                                                <td>{{ $item->C3*1 }}</td>
-                                                <td>{{ $item->C4*1 }}</td>
-                                                <td>{{ $item->C5*1 }}</td>
-                                                <td>{{ $item->C6*1 }}</td>
-                                                <td>{{ $item->C7*1 }}</td>
-                                                <td>{{ $item->C8*1 }}</td>
-                                                <td>{{ $item->C9*1 }}</td>
-                                                <td>{{ $item->C10*1 }}</td>
+                                                <td>{{ $item->C1*0.01 }}</td>
+                                                <td>{{ $item->C2*0.01 }}</td>
+                                                <td>{{ $item->C3*0.01 }}</td>
+                                                <td>{{ $item->C4*0.01 }}</td>
+                                                <td>{{ $item->C5*0.01 }}</td>
+                                                <td>{{ $item->C6*0.01 }}</td>
+                                                <td>{{ $item->C7*0.01 }}</td>
+                                                <td>{{ $item->C8*0.01 }}</td>
+                                                <td>{{ $item->C9*0.01 }}</td>
+                                                <td>{{ $item->C10*0.01 }}</td>
+                                                <td>{{ $item->total_hasil*0.01 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
