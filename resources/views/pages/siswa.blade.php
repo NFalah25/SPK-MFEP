@@ -17,7 +17,7 @@
                         <div class="card-header">
                             <h4>Daftar Siswa</h4>
                             <div class="card-header-action">
-                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Isi Nilai Kandidat</button>
+                                <button type="button" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Isi Nilai Siswa</button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -77,7 +77,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Isi Nilai Kandidat</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Isi Nilai Siswa</h5>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('siswa.store') }}" method="post">
@@ -132,7 +132,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Nilai Kandidat</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="color: #0F2C56">Ubah Nilai Siswa</h5>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('siswa.ubah') }}" method="post">
