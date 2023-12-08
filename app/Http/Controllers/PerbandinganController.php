@@ -62,7 +62,7 @@ class PerbandinganController extends Controller
             SUM( IF(evaluasi.id_kriteria=7, IF(kriteria.atribut='benefit', evaluasi.nilai/" . max($X[7]) . ", " . min($X[7]) . "/evaluasi.nilai), 0)) AS C7,
             SUM( IF(evaluasi.id_kriteria=8, IF(kriteria.atribut='benefit', evaluasi.nilai/" . max($X[8]) . ", " . min($X[8]) . "/evaluasi.nilai), 0)) AS C8,
             SUM( IF(evaluasi.id_kriteria=9, IF(kriteria.atribut='benefit', evaluasi.nilai/" . max($X[9]) . ", " . min($X[9]) . "/evaluasi.nilai), 0)) AS C9,
-            SUM( IF(evaluasi.id_kriteria=10, IF(kriteria.atribut='cost', evaluasi.nilai/" . max($X[10]) . ", " . min($X[10]) . "/evaluasi.nilai), 0)) AS C10
+            SUM( IF(evaluasi.id_kriteria=10, IF(kriteria.atribut='benefit', evaluasi.nilai/" . max($X[10]) . ", " . min($X[10]) . "/evaluasi.nilai), 0)) AS C10
             FROM evaluasi
             JOIN alternatif USING(id_alternatif)
             JOIN kriteria USING(id_kriteria)
@@ -115,13 +115,21 @@ class PerbandinganController extends Controller
             ->orderBy('alternatif.id_alternatif')
             ->get();
 
-        $results = DB::select("
+        $peringkat = DB::select("
             SELECT
                 alternatif.alternatif,
                 SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) AS total_hasil_benefit,
                 ROW_NUMBER() OVER (ORDER BY SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) DESC) AS benefit_rank,
                 SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) AS total_hasil_cost,
-                ROW_NUMBER() OVER (ORDER BY SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) DESC) AS cost_rank
+                ROW_NUMBER() OVER (ORDER BY SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) DESC) AS cost_rank,
+                (SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) -
+                SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END)) AS benefit_cost_difference,
+                ROW_NUMBER() OVER (ORDER BY (SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) -
+                                            SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END)) DESC) AS benefit_cost_rank,
+                (SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) +
+                SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END)) AS total_hasil,
+                ROW_NUMBER() OVER (ORDER BY (SUM(CASE WHEN kriteria.atribut = 'Benefit' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END) +
+                                            SUM(CASE WHEN kriteria.atribut = 'Cost' THEN evaluasi.nilai * kriteria.bobot ELSE 0 END)) DESC) AS total_hasil_rank
             FROM
                 evaluasi
             JOIN alternatif ON evaluasi.id_alternatif = alternatif.id_alternatif
@@ -129,10 +137,10 @@ class PerbandinganController extends Controller
             GROUP BY
                 alternatif.id_alternatif, alternatif.alternatif
             ORDER BY
-                alternatif.id_alternatif
+                alternatif.id_alternatif;
         ");
 
-        return view('pages.perbandingan', compact('A', 'R', 'P', 'V', 'mfep', 'mfepPeringkat', 'results'));
+        return view('pages.perbandingan', compact('A', 'R', 'P', 'V', 'mfep', 'mfepPeringkat', 'peringkat'));
     }
 
     /**

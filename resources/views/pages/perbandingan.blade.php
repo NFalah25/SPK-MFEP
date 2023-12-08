@@ -58,11 +58,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($mfepPeringkat as $index => $data)
+                                        @foreach ($peringkat as $index => $data)
                                             <tr>
-                                                <td>{{ $data->peringkat }}</td>
+                                                <td>{{ $data->benefit_cost_rank }}</td>
                                                 <td>{{ $data->alternatif }}</td>
-                                                <td>{{ $data->total_hasil*0.01 }}</td>
+                                                <td>{{ $data->benefit_cost_difference*0.01 }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
