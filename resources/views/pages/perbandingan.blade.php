@@ -60,7 +60,7 @@
                                     <tbody>
                                         @foreach ($peringkat as $index => $data)
                                             <tr>
-                                                <td>{{ $data->benefit_cost_rank }}</td>
+                                                <td>{{ $data->total_hasil_rank }}</td>
                                                 <td>{{ $data->alternatif }}</td>
                                                 <td>{{ $data->benefit_cost_difference*0.01 }}</td>
                                             </tr>
